@@ -30,6 +30,6 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(2));
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeFalsy();
+    expect(errors['minlength']).toBeTruthy();
   });
 });
