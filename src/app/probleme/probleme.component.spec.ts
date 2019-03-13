@@ -28,6 +28,6 @@ describe('ProblemeComponent', () => {
   it('champ prénom invalide avec 2 caractères',()=>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(2));
-    expect(zone.valid).toBeTruthy();
+    expect(zone.valid).toBeFalsy();
   });
 });
