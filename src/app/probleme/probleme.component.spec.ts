@@ -38,10 +38,8 @@ describe('ProblemeComponent', () => {
     expect(zone.valid).toBeTruthy();
   });
   it('champ prénom valide avec 200 caractères',()=>{
-    let errors = {};
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(200));
-    errors = zone.errors || {};
-    expect('minlength').toBeTruthy();
+    expect(zone.valid).toBeTruthy();
   });
 });
