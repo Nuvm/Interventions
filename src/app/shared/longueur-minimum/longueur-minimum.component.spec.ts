@@ -21,10 +21,10 @@ describe('longueur zone Validator',() => {
         //Comparer le résultat OBTENU avec le résultat PRÉVU
         expect(result).toBeNull();
     });
-    it('une phrase avec des mots est valide',() => {
+    it('une phrase avec 3 espaces, des mots et ensuite 3 espaces est valide',() => {
         //Prépare une variable pour manipuler le validateur
         let validator = ZonesValidator.longueurMinimum(3);
-        let control = { value: 'Vive angular'};
+        let control = { value: '   je le veux   '};
         //Faire l'appel du validateur
         let result = validator(control as AbstractControl);
         //Comparer le résultat OBTENU avec le résultat PRÉVU
