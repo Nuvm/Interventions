@@ -1,10 +1,10 @@
 import { ValidatorFn, AbstractControl } from '@angular/forms';
 
 export class ZonesValidator {
-    static longueurMinimum(): ValidatorFn {
+    static longueurMinimum(longueur: number): ValidatorFn {
         //Sous ANGULAR dans les validateurs pour indiquer un succès retourner NULL autrement retourner une clé-valeur JSON
-        return (longueur: AbstractControl): {[key:string]:boolean}|null => {
-            if(longueur.value.toString().trim().length>2){
+        return (valeurControle: AbstractControl): {[key:string]:boolean}|null => {
+            if(valeurControle.value.toString().trim().length>=longueur){
                 return null;
             }
             return { 'nbreCaracteresInsuffisants': true };
