@@ -30,49 +30,49 @@ describe('longueur zone Validator',() => {
         //Comparer le résultat OBTENU avec le résultat PRÉVU
         expect(result).toBeNull();
     });
-    it('une phrase avec des mots est valide',() => {
+    it('une phrase avec 1 espace et 2 caractères est invalide',() => {
         //Prépare une variable pour manipuler le validateur
         let validator = ZonesValidator.longueurMinimum(3);
-        let control = { value: 'Vive angular'};
+        let control = { value: ' xx'};
+        //Faire l'appel du validateur
+        let result = validator(control as AbstractControl);
+        //Comparer le résultat OBTENU avec le résultat PRÉVU
+        expect(result['nbreCaracteresInsuffisants']).toBe(true);
+    });
+    it('une phrase avec 2 espaces et 1 caractère est invalide',() => {
+        //Prépare une variable pour manipuler le validateur
+        let validator = ZonesValidator.longueurMinimum(3);
+        let control = { value: '  x'};
+        //Faire l'appel du validateur
+        let result = validator(control as AbstractControl);
+        //Comparer le résultat OBTENU avec le résultat PRÉVU
+        expect(result['nbreCaracteresInsuffisants']).toBe(true);
+    });
+    it('une phrase avec 3 espaces et 3 caractères est valide',() => {
+        //Prépare une variable pour manipuler le validateur
+        let validator = ZonesValidator.longueurMinimum(3);
+        let control = { value: '   xxx'};
         //Faire l'appel du validateur
         let result = validator(control as AbstractControl);
         //Comparer le résultat OBTENU avec le résultat PRÉVU
         expect(result).toBeNull();
     });
-    it('une phrase avec des mots est valide',() => {
+    it('une phrase avec 5 espaces, 5 caractères et 5 espaces est valide',() => {
         //Prépare une variable pour manipuler le validateur
         let validator = ZonesValidator.longueurMinimum(3);
-        let control = { value: 'Vive angular'};
+        let control = { value: '     xxxxx     '};
         //Faire l'appel du validateur
         let result = validator(control as AbstractControl);
         //Comparer le résultat OBTENU avec le résultat PRÉVU
         expect(result).toBeNull();
     });
-    it('une phrase avec des mots est valide',() => {
+    it('une chaîne nulle est invalide',() => {
         //Prépare une variable pour manipuler le validateur
         let validator = ZonesValidator.longueurMinimum(3);
-        let control = { value: 'Vive angular'};
+        let control = { value: null};
         //Faire l'appel du validateur
         let result = validator(control as AbstractControl);
         //Comparer le résultat OBTENU avec le résultat PRÉVU
-        expect(result).toBeNull();
-    });
-    it('une phrase avec des mots est valide',() => {
-        //Prépare une variable pour manipuler le validateur
-        let validator = ZonesValidator.longueurMinimum(3);
-        let control = { value: 'Vive angular'};
-        //Faire l'appel du validateur
-        let result = validator(control as AbstractControl);
-        //Comparer le résultat OBTENU avec le résultat PRÉVU
-        expect(result).toBeNull();
-    });
-    it('une phrase avec des mots est valide',() => {
-        //Prépare une variable pour manipuler le validateur
-        let validator = ZonesValidator.longueurMinimum(3);
-        let control = { value: 'Vive angular'};
-        //Faire l'appel du validateur
-        let result = validator(control as AbstractControl);
-        //Comparer le résultat OBTENU avec le résultat PRÉVU
-        expect(result).toBeNull();
+        expect(result['nbreCaracteresInsuffisants']).toBe(true);
     });
 });
